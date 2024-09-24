@@ -36,6 +36,8 @@ jobs:
 
       - name: Run echo
         run: echo "Hola"
+      - name: Run Start
+        run: npm run start
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,5 +45,3 @@ jobs:
     steps:
       - name: echo
         run: echo "Hola, yo soy el job que despliega la API"
-      - name: Run Start
-        run: npm run start
