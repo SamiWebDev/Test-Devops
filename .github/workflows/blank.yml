@@ -52,13 +52,13 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Triggers the workflow on push or pull request events for the "develop" branch
   push:
     branches: ["develop"]
   pull_request:
     branches: ["develop"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows the workflow to be run manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -69,14 +69,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: instalar las dependencias
-        run: cd ./EmailServices && npm i
+      - name: Install dependencies for EmailServices
+        run: |
+          cd EmailServices
+          npm install
 
-      - name: Hacer los test
-        run: cd ./EmailServices && npm test
+      - name: Run tests for EmailServices
+        run: |
+          cd EmailServices
+          npm test
 
-      - name: Run echo
-        run: echo "Hola"
+      - name: Echo message for EmailServices
+        run: echo "Hola from EmailServices"
 
   UserServices:
     runs-on: ubuntu-latest
@@ -85,11 +89,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: instalar las dependencias
-        run: cd ./UserServices && npm i
+      - name: Install dependencies for UserServices
+        run: |
+          cd UserServices
+          npm install
 
-      - name: Hacer los test
-        run: cd ./UserServices && npm test
+      - name: Run tests for UserServices
+        run: |
+          cd UserServices
+          npm test
 
-      - name: Run echo
-        run: echo "Hola"
+      - name: Echo message for UserServices
+        run: echo "Hola from UserServices"
