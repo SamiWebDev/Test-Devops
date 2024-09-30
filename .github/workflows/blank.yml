@@ -2,7 +2,7 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events for the "develop" branch
+  # Triggers the workflow on push or pull request events for the "CICD" branch
   push:
     branches: ["CICD"]
   pull_request:
@@ -12,17 +12,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  CICD:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies for EmailServices
-        run: |
-          npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # Adjust this to your desired Node.js version
 
-      - name: Run tests for EmailServices
-        run: |
-          npm test
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
