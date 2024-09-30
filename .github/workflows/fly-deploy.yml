@@ -3,7 +3,7 @@ name: Fly Deploy
 
 on:
   workflow_run:
-    workflows: ["Run Tests"] # Asegúrate de que coincida con el nombre del workflow de tests
+    workflows: ["CI"] # Asegúrate de que coincida con el nombre del workflow de tests
     types:
       - completed
 
