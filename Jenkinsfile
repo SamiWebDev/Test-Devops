@@ -4,7 +4,7 @@ pipeline {
         nodejs "nodejs18"
     }
 
-    trigger{
+    triggers{
         githubPush()
     }
 
